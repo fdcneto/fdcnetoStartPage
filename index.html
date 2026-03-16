@@ -211,8 +211,12 @@
         </header>
 
         <form action="https://www.google.com/search" method="GET" target="_blank" class="google-search">
-            <span class="icon">&#128269;</span> <!-- Ícone de lupa -->
-            <input type="text" name="q" placeholder="Pesquisar no Google..." required>
+            <span class="icon">🔍</span>
+            <input type="text" name="q" id="searchInput" list="google-suggestions" placeholder="Pesquisar no Google..."
+                autocomplete="off" required>
+
+            <datalist id="google-suggestions"></datalist>
+
             <button type="submit">Buscar</button>
         </form>
 
@@ -539,6 +543,42 @@
         </footer>
 
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const searchInput = document.getElementById('searchInput');
+            const suggestionsList = document.getElementById('google-suggestions');
+
+            // Escuta o que você digita
+            searchInput.addEventListener('input', async () => {
+                const query = searchInput.value.trim();
+
+                // Só busca se tiver 2 ou mais letras
+                if (query.length < 2) {
+                    suggestionsList.innerHTML = '';
+                    return;
+                }
+
+                try {
+                    // Consulta as sugestões do Google
+                    const response = await fetch(`https://suggestqueries.google.com/complete/search?client=firefox&q=${encodeURIComponent(query)}`);
+                    const data = await response.json();
+                    const sugestoes = data[1]; // Aqui estão os termos
+
+                    // Limpa e preenche a lista
+                    suggestionsList.innerHTML = '';
+                    sugestoes.forEach(termo => {
+                        const option = document.createElement('option');
+                        option.value = termo;
+                        suggestionsList.appendChild(option);
+                    });
+                } catch (error) {
+                    console.error("Erro ao buscar sugestões", error);
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>
