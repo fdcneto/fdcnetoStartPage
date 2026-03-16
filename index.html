@@ -543,43 +543,12 @@
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const input = document.getElementById('searchInput');
-            const form = input.closest('form'); // Pega o formulário pai automaticamente
-
-            if (!input) return;
-
-            input.addEventListener('input', function (e) {
-                const query = this.value.trim();
-
-                // Verificação Cirúrgica: Se o que foi "digitado" existe na lista, é porque foi um clique
-                const options = document.querySelectorAll('#google-suggestions option');
-                let isSuggestion = false;
-                options.forEach(opt => {
-                    if (opt.value === this.value) isSuggestion = true;
-                });
-
-                // Se for uma sugestão clicada, envia o formulário na hora
-                if (isSuggestion) {
-                    form.submit();
-                    return;
-                }
-
-                if (query.length < 2) return;
-
-                // Busca as sugestões (JSONP para evitar bloqueio)
-                const script = document.createElement('script');
-                script.src = `https://suggestqueries.google.com/complete/search?client=firefox&q=${encodeURIComponent(query)}&callback=showSuggestions`;
-                document.body.appendChild(script);
-                script.onload = () => script.remove();
-            });
-        });
-
+        // 1. Função Global que recebe os dados do Google (JSONP)
         function showSuggestions(data) {
             const datalist = document.getElementById('google-suggestions');
-            const sugestoes = data[1];
             if (!datalist) return;
 
+            const sugestoes = data[1];
             datalist.innerHTML = '';
             sugestoes.forEach(termo => {
                 const option = document.createElement('option');
@@ -587,6 +556,45 @@
                 datalist.appendChild(option);
             });
         }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const input = document.getElementById('searchInput');
+            const form = input.closest('form');
+
+            if (!input) return;
+
+            // 2. DISPARO IMEDIATO + LIMPEZA (Ao clicar na sugestão)
+            input.addEventListener('change', function () {
+                if (this.value.trim() !== "") {
+                    form.submit();
+                    // Pequeno atraso para garantir que o navegador processe o envio antes de limpar
+                    setTimeout(() => {
+                        this.value = '';
+                    }, 100);
+                }
+            });
+
+            // 3. LIMPEZA AO CLICAR NO BOTÃO "BUSCAR" (Submit manual)
+            form.addEventListener('submit', () => {
+                setTimeout(() => {
+                    input.value = '';
+                }, 100);
+            });
+
+            // 4. BUSCA DE SUGESTÕES (Enquanto digita)
+            input.addEventListener('input', function () {
+                const query = this.value.trim();
+                if (query.length < 2) return;
+
+                const oldScript = document.getElementById('google-api-script');
+                if (oldScript) oldScript.remove();
+
+                const script = document.createElement('script');
+                script.id = 'google-api-script';
+                script.src = `https://suggestqueries.google.com/complete/search?client=firefox&q=${encodeURIComponent(query)}&callback=showSuggestions`;
+                document.body.appendChild(script);
+            });
+        });
     </script>
 
 </body>
