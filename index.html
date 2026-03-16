@@ -34,63 +34,175 @@
             </div>
 
             <!-- Modal do GROK -->
-<div id="grok-modal" class="grok-modal">
-  <div class="grok-content">
-    <button class="grok-close" onclick="fecharGrok()">×</button>
-    <h2 class="grok-title">🤖 Pesquisar no <span>Grok</span></h2>
+            <div id="grok-modal" class="grok-modal">
+                <div class="grok-content">
+                    <button class="grok-close" onclick="fecharGrok()">×</button>
+                    <h2 class="grok-title">🤖 Pesquisar no <span>Grok</span></h2>
 
-    <form action="https://grok.com/" method="GET" target="_blank" class="grok-search">
-      <span class="grok-icon"></span>
-      <input type="text" name="q" placeholder="Pergunte ao Grok..." required>
-      <button type="submit">BUSCAR</button>
-    </form>
+                    <form action="https://grok.com/" method="GET" target="_blank" class="grok-search">
+                        <span class="grok-icon"></span>
+                        <input type="text" name="q" placeholder="Pergunte ao Grok..." required>
+                        <button type="submit">BUSCAR</button>
+                    </form>
 
-    <p class="grok-hint">💡 O Grok abrirá em uma nova aba</p>
-  </div>
-</div>
-<!-- Modal do GROK -->
+                    <p class="grok-hint">💡 O Grok abrirá em uma nova aba</p>
+                </div>
+            </div>
+            <!-- Modal do GROK -->
 
-<!-- Modal do GROK Js-->
-<script>
-function abrirGrok() {
-  document.getElementById("grok-modal").style.display = "flex";
-}
+            <!-- Modal dos CURSOS -->
+            <div id="cursos-modal" class="grok-modal">
+                <div class="grok-content">
+                    <button class="grok-close" onclick="fecharCursos()">×</button>
+                    <h2 class="grok-title">🎓 Cursos</h2>
 
-function fecharGrok() {
-  const modal = document.getElementById("grok-modal");
-  if (modal.style.display === "flex") {
-    // Aplica animação de fade-out antes de ocultar
-    modal.style.animation = "fadeOut 0.3s ease forwards";
-    setTimeout(() => {
-      modal.style.display = "none";
-      modal.style.animation = ""; // reseta animação
-    }, 280); // tempo igual ao fadeOut
-  }
-}
+                    <ul class="cursos-list">
+                        <li><a href="https://www.udemy.com/" target="_blank">Udemy</a></li>
+                        <li><a href="https://www.dio.me/" target="_blank">DiO</a></li>
+                        <li><a href="https://www.santanderopenacademy.com/pt_br/index.html" target="_blank">Santander
+                                Open Academy</a></li>
+                        <li><a href="https://www.youtube.com/c/cfbcursos/playlists" target="_blank">Canal Fessor
+                                Bruno</a></li>
+                        <li><a href="https://www.youtube.com/user/bosontreinamentos/playlists" target="_blank">Bóson
+                                Treinamentos</a></li>
+                        <li><a href="https://www.youtube.com/user/univesptv/playlists" target="_blank">Univesp</a></li>
+                        <li><a href="https://www.youtube.com/c/loianegroner/playlists" target="_blank">Loiane Groner</a>
+                        </li>
+                        <li><a href="https://www.youtube.com/c/Ot%C3%A1vioMiranda/playlists" target="_blank">Otávio
+                                Miranda</a></li>
+                        <li><a href="https://www.youtube.com/c/excriptvideo/playlists" target="_blank">eXcript</a></li>
+                        <li><a href="https://www.youtube.com/@CidaCastello" target="_blank">Cida Castello</a></li>
+                        <li><a href="https://williamazaradoprogramas.blogspot.com/" target="_blank">William Azarado</a>
+                        </li>
+                        <li><a href="https://www.youtube.com/channel/UCm63tB8wsKOVvxoU4iMpS2A" target="_blank">Dev
+                                Aprender</a></li>
+                        <li><a href="https://www.mediafire.com/" target="_blank">Mediafire</a></li>
+                        <li><a href="https://en.taiwebs.com/?lang=BR" target="_blank">Taiwebs</a></li>
+                        <li><a href="https://play.google.com/store" target="_blank">Google PlayStore</a></li>
+                    </ul>
 
-window.onclick = function(event) {
-  const modal = document.getElementById("grok-modal");
-  if (event.target === modal) fecharGrok();
-};
+                </div>
+            </div>
+            <!-- Modal dos CURSOS -->
 
-// 🧠 Fecha automaticamente ao clicar em "Buscar"
-document.addEventListener("DOMContentLoaded", () => {
-  const grokForm = document.querySelector(".grok-search");
-  if (grokForm) {
-    grokForm.addEventListener("submit", () => {
-      fecharGrok();
-    });
-  }
-});
+            <!-- Modal do GROK Js-->
+            <script>
+                function abrirGrok() {
+                    document.getElementById("grok-modal").style.display = "flex";
+                }
 
-// ⌨️ Fecha o modal ao pressionar ESC
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    fecharGrok();
-  }
-});
-</script>
-<!-- Modal do GROK Js-->
+                function fecharGrok() {
+                    const modal = document.getElementById("grok-modal");
+                    if (modal.style.display === "flex") {
+                        // Aplica animação de fade-out antes de ocultar
+                        modal.style.animation = "fadeOut 0.3s ease forwards";
+                        setTimeout(() => {
+                            modal.style.display = "none";
+                            modal.style.animation = ""; // reseta animação
+                        }, 280); // tempo igual ao fadeOut
+                    }
+                }
+
+                window.onclick = function (event) {
+                    const modal = document.getElementById("grok-modal");
+                    if (event.target === modal) fecharGrok();
+                };
+
+                // 🧠 Fecha automaticamente ao clicar em "Buscar"
+                document.addEventListener("DOMContentLoaded", () => {
+                    const grokForm = document.querySelector(".grok-search");
+                    if (grokForm) {
+                        grokForm.addEventListener("submit", () => {
+                            fecharGrok();
+                        });
+                    }
+                });
+
+                // ⌨️ Fecha o modal ao pressionar ESC
+                document.addEventListener("keydown", (event) => {
+                    if (event.key === "Escape") {
+                        fecharGrok();
+                    }
+                });
+            </script>
+            <!-- Modal do GROK Js-->
+
+            <script>
+                // === Funções da modal CURSOS ===
+                function abrirCursos() {
+                    const modal = document.getElementById("cursos-modal");
+                    modal.style.display = "flex";
+                    modal.style.animation = "fadeIn 0.3s ease";
+                }
+
+                function fecharCursos() {
+                    const modal = document.getElementById("cursos-modal");
+                    if (modal && modal.style.display === "flex") {
+                        modal.style.animation = "fadeOut 0.28s ease forwards";
+                        setTimeout(() => {
+                            modal.style.display = "none";
+                            modal.style.animation = "";
+                        }, 280);
+                    }
+                }
+
+                window.addEventListener('click', (event) => {
+                    const cm = document.getElementById("cursos-modal");
+                    if (cm && event.target === cm) fecharCursos();
+                });
+
+                document.addEventListener("keydown", (event) => {
+                    if (event.key === "Escape") fecharCursos();
+                });
+
+                document.addEventListener("DOMContentLoaded", () => {
+                    const cursosLinks = document.querySelectorAll("#cursos-modal .cursos-list a");
+                    cursosLinks.forEach(a => {
+                        a.addEventListener("click", () => {
+                            setTimeout(fecharCursos, 150);
+                        });
+                    });
+                });
+            </script>
+            <!-- Modal do GROK Js-->
+
+            <script>
+                // === Funções da modal CURSOS ===
+                function abrirCursos() {
+                    const modal = document.getElementById("cursos-modal");
+                    modal.style.display = "flex";
+                    modal.style.animation = "fadeIn 0.3s ease";
+                }
+
+                function fecharCursos() {
+                    const modal = document.getElementById("cursos-modal");
+                    if (modal && modal.style.display === "flex") {
+                        modal.style.animation = "fadeOut 0.28s ease forwards";
+                        setTimeout(() => {
+                            modal.style.display = "none";
+                            modal.style.animation = "";
+                        }, 280);
+                    }
+                }
+
+                window.addEventListener('click', (event) => {
+                    const cm = document.getElementById("cursos-modal");
+                    if (cm && event.target === cm) fecharCursos();
+                });
+
+                document.addEventListener("keydown", (event) => {
+                    if (event.key === "Escape") fecharCursos();
+                });
+
+                document.addEventListener("DOMContentLoaded", () => {
+                    const cursosLinks = document.querySelectorAll("#cursos-modal .cursos-list a");
+                    cursosLinks.forEach(a => {
+                        a.addEventListener("click", () => {
+                            setTimeout(fecharCursos, 150);
+                        });
+                    });
+                });
+            </script>
 
             <h6 class="main-title">
                 <span class="title-line">@fdcneto</span>
@@ -122,9 +234,16 @@ document.addEventListener("keydown", (event) => {
                     <span class="button-text">Gemini</span>
                 </button>
 
+                <button class="neon-button dev-button" data-service="google-ai-studio"
+                    onclick="window.open('https://aistudio.google.com/prompts/new_chat', '_blank')"
+                    title="Ir para Google Ai Studio">
+                    <span class="button-icon">🤖</span>
+                    <span class="button-text">Google Ai Studio</span>
+                </button>
+
                 <button class="neon-button dev-button" data-service="claudeAi"
                     onclick="window.open('https://claude.ai/new', '_blank')" title="Ir para Claude.Ai">
-                    <span class="button-icon">🧠</span>
+                    <span class="button-icon">🤖</span>
                     <span class="button-text">Claude.Ai</span>
                 </button>
 
@@ -140,6 +259,18 @@ document.addEventListener("keydown", (event) => {
                     <span class="button-text">DeepSeek</span>
                 </button>
 
+                <button class="neon-button dev-button" data-service="z_ai"
+                    onclick="window.open('https://chat.z.ai/', '_blank')" title="Ir para Z.Ai">
+                    <span class="button-icon">🧠</span>
+                    <span class="button-text">Z.Ai</span>
+                </button>
+
+                <button class="neon-button dev-button" data-service="perplexity"
+                    onclick="window.open('https://www.perplexity.ai/', '_blank')" title="Ir para Perplexity">
+                    <span class="button-icon">🧠</span>
+                    <span class="button-text">Perplexity</span>
+                </button>
+
                 <button class="neon-button dev-button" data-service="gamma"
                     onclick="window.open('https://gamma.app/pt-br', '_blank')" title="Ir para Gamma.app">
                     <span class="button-icon">🧠</span>
@@ -150,6 +281,12 @@ document.addEventListener("keydown", (event) => {
                     onclick="window.open('https://bolt.new/', '_blank')" title="Ir para Bolt">
                     <span class="button-icon">⚡</span>
                     <span class="button-text">Bolt</span>
+                </button>
+
+                <button class="neon-button dev-button" data-service="github"
+                    onclick="window.open('https://github.com/', '_blank')" title="Ir para GitHub">
+                    <span class="button-icon">🐱</span>
+                    <span class="button-text">GitHub</span>
                 </button>
 
                 <button class="neon-button dev-button" data-service="w3schools"
@@ -190,16 +327,11 @@ document.addEventListener("keydown", (event) => {
                     <span class="button-text">Colors</span>
                 </button>
 
-                <button class="neon-button dev-button" data-service="github"
-                    onclick="window.open('https://github.com/', '_blank')" title="Ir para GitHub">
-                    <span class="button-icon">🐱</span>
-                    <span class="button-text">GitHub</span>
-                </button>
-
-                <button class="neon-button dev-button" data-service="minimax"
-                    onclick="window.open('https://minimaxai.me/', '_blank')" title="Ir para Minimax">
+                <button class="neon-button dev-button" data-service="tutoriais"
+                    onclick="window.open('https://fdcneto.github.io/guia_completo_django/', '_blank')"
+                    title="Ir para Tutoriais">
                     <span class="button-icon">🧠</span>
-                    <span class="button-text">Minimax</span>
+                    <span class="button-text">Tutoriais</span>
                 </button>
             </div>
         </section>
@@ -209,8 +341,7 @@ document.addEventListener("keydown", (event) => {
             <h2 class="section-title">Mídia & Entretenimento</h2>
             <div class="media-grid">
 
-                <a href="https://www.primevideo.com/" target="_blank" class="media-card"
-                    title="Ir para Prime Vídeo">
+                <a href="https://www.primevideo.com/" target="_blank" class="media-card" title="Ir para Prime Vídeo">
                     <div class="card-content">
                         <span class="card-icon">📱</span>
                         <span class="card-title">Prime Vídeo</span>
@@ -224,16 +355,14 @@ document.addEventListener("keydown", (event) => {
                     </div>
                 </a>
 
-                <a href="https://www.youtube.com/" target="_blank" class="media-card"
-                    title="Ir para Youtube">
+                <a href="https://www.youtube.com/" target="_blank" class="media-card" title="Ir para Youtube">
                     <div class="card-content">
                         <span class="card-icon">📹</span>
                         <span class="card-title">Youtube</span>
                     </div>
                 </a>
 
-                <a href="https://www.viki.com/" target="_blank" class="media-card"
-                    title="Ir para Rakuten Viki">
+                <a href="https://www.viki.com/" target="_blank" class="media-card" title="Ir para Rakuten Viki">
                     <div class="card-content">
                         <span class="card-icon">📺</span>
                         <span class="card-title">Rakuten Viki</span>
@@ -278,7 +407,8 @@ document.addEventListener("keydown", (event) => {
                     </div>
                 </a>
 
-                <a href="https://accounts.spotify.com/login?continue=https%3A%2F%2Fopen.spotify.com%2Fbrowse%2Ffeatured" target="_blank" class="media-card" title="Ir para Spotify">
+                <a href="https://accounts.spotify.com/login?continue=https%3A%2F%2Fopen.spotify.com%2Fbrowse%2Ffeatured"
+                    target="_blank" class="media-card" title="Ir para Spotify">
                     <div class="card-content">
                         <span class="card-icon">🎧</span>
                         <span class="card-title">Spotify</span>
@@ -325,7 +455,7 @@ document.addEventListener("keydown", (event) => {
         <!-- SERVIÇOS PRINCIPAIS -->
         <section class="section-services">
             <div class="services-grid">
-                
+
 
                 <button class="service-button gmail" onclick="window.open('https://mail.google.com/', '_blank')"
                     title="Ir para GMail">
@@ -357,9 +487,8 @@ document.addEventListener("keydown", (event) => {
                     <span class="service-name">Mercado Livre</span>
                 </button>
 
-                
-                <button class="service-button cursos" onclick="location.href='index2Cursos.html';"
-                    title="Ir para Cursos">
+
+                <button class="service-button cursos" onclick="abrirCursos()" title="Ver Cursos">
                     <span class="service-icon">📋</span>
                     <span class="service-name">Cursos</span>
                 </button>
@@ -373,26 +502,28 @@ document.addEventListener("keydown", (event) => {
                 <button class="bank-button bradesco"
                     onclick="window.open('https://banco.bradesco/html/classic/index.shtm', '_blank')"
                     title="Ir para Bradesco">
-                    <span class="bank-icon">🏦</span>
+                    <span class="bank-icon"><img src="./src/img/bradesco-icon-logo.png" width="28px" alt=""></span>
                     <span class="bank-name">Bradesco</span>
                 </button>
 
                 <button class="bank-button caixa"
                     onclick="window.open('http://www.caixa.gov.br/Paginas/home-caixa.aspx', '_blank')"
                     title="Ir para Caixa">
-                    <span class="bank-icon">🏛️</span>
+                    <span class="bank-icon"><img src="./src/img/x-volume-negativa-54.png" width="30px" alt=""></span>
                     <span class="bank-name">Caixa</span>
                 </button>
 
                 <button class="bank-button santander" onclick="window.open('https://www.santander.com.br/', '_blank')"
                     title="Ir para Santander">
-                    <span class="bank-icon">🔴</span>
+                    <span class="bank-icon"><img src="./src/img/png-clipart-santander-group-santander.png" width="30px"
+                            alt=""></span>
                     <span class="bank-name">Santander</span>
                 </button>
 
                 <button class="bank-button itau" onclick="window.open('https://www.itau.com.br/', '_blank')"
                     title="Ir para Itaú">
-                    <span class="bank-icon">🧡</span>
+                    <span class="bank-icon"><img src="./src/img/itau-logo-0-2048x2048copiaWhiteLetter.png" width="30px"
+                            alt=""></span>
                     <span class="bank-name">Itaú</span>
                 </button>
             </div>
