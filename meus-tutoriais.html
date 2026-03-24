@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,9 +27,15 @@
             align-items: center;
         }
 
-        .container { max-width: 800px; width: 100%; }
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
 
-        header { text-align: center; margin-bottom: 30px; }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
 
         h1 {
             font-size: 2.5rem;
@@ -39,7 +46,9 @@
         }
 
         /* --- Barra de Busca --- */
-        .search-container { margin-bottom: 20px; }
+        .search-container {
+            margin-bottom: 20px;
+        }
 
         #tutorialSearch {
             width: 100%;
@@ -54,7 +63,10 @@
             box-sizing: border-box;
         }
 
-        #tutorialSearch:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.1); }
+        #tutorialSearch:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.1);
+        }
 
         /* --- Filtros de Categoria --- */
         .category-filters {
@@ -76,7 +88,8 @@
             transition: all 0.2s;
         }
 
-        .filter-btn:hover, .filter-btn.active {
+        .filter-btn:hover,
+        .filter-btn.active {
             background: var(--accent);
             color: var(--bg-color);
             border-color: var(--accent);
@@ -84,7 +97,11 @@
         }
 
         /* --- Grid e Cards --- */
-        .tutorial-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
+        .tutorial-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
 
         .tutorial-card {
             background: var(--card-bg);
@@ -96,11 +113,23 @@
             display: block;
         }
 
-        .tutorial-card:hover { transform: translateY(-3px); border-color: var(--accent); }
+        .tutorial-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent);
+        }
 
-        .tutorial-card h2 { margin: 0 0 8px 0; color: var(--accent); font-size: 1.25rem; }
-        .tutorial-card p { margin: 0; color: var(--text-dim); font-size: 0.9rem; }
-        
+        .tutorial-card h2 {
+            margin: 0 0 8px 0;
+            color: var(--accent);
+            font-size: 1.25rem;
+        }
+
+        .tutorial-card p {
+            margin: 0;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
         .tag {
             display: inline-block;
             background: rgba(56, 189, 248, 0.1);
@@ -112,11 +141,22 @@
             font-weight: 600;
         }
 
-        .no-results { text-align: center; color: var(--text-dim); display: none; margin-top: 20px; }
+        .no-results {
+            text-align: center;
+            color: var(--text-dim);
+            display: none;
+            margin-top: 20px;
+        }
 
-        footer { margin-top: 50px; text-align: center; color: var(--text-dim); font-size: 0.8rem; }
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+        }
     </style>
 </head>
+
 <body>
 
     <div class="container">
@@ -126,7 +166,8 @@
         </header>
 
         <div class="search-container">
-            <input type="text" id="tutorialSearch" placeholder="🔍 Buscar por título ou descrição..." onkeyup="filterTutorials()">
+            <input type="text" id="tutorialSearch" placeholder="🔍 Buscar por título ou descrição..."
+                onkeyup="filterTutorials()">
         </div>
 
         <div class="category-filters">
@@ -138,7 +179,7 @@
         </div>
 
         <main class="tutorial-grid" id="tutorialGrid">
-            
+
             <a href="https://fdcneto.github.io/React_Native_Completo/" class="tutorial-card" data-category="React">
                 <h2>React Native Completo</h2>
                 <p>Passo a passo para criar aplicações robustas com React.</p>
@@ -162,8 +203,14 @@
                 <p>Passo a passo para criar aplicações robustas com Javascript.</p>
                 <span class="tag">Javascript</span>
             </a>
-            
-                
+
+            <a href="https://fdcneto.github.io/Guia_Git_GitHub/" class="tutorial-card" data-category="React">
+                <h2>Manual Git e GitHub para Iniciantes</h2>
+                <p>Guia para quem está começando com controle de versão.</p>
+                <span class="tag">Git / GitHub</span>
+            </a>
+
+
 
         </main>
 
@@ -181,7 +228,7 @@
             // Atualiza botões
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            
+
             currentCategory = category;
             filterTutorials(); // Re-aplica a busca com a nova categoria
         }
@@ -213,4 +260,5 @@
     </script>
 
 </body>
+
 </html>
